@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header'
+import Footer from './components/Footer'
+
+import CatIndex from './pages/CatIndex'
+import CatShow from './pages/CatShow'
+import CatNew from './pages/CatNew'
+import CatEdit from './pages/CatEdit'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+
+import './App.css'
+import mockCats from './mockCats.js'
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+class App extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      cats: mockCats
+    }
+  }
+  render(){
+    return(
+      <Router>
+        <Header />
+
+        <Switch>
+          <Route exact path="/" component={ Home } />
+          <Route path="/catindex" component={ CatIndex } />
+          <Route path="/catshow/:id" component={ CatShow } />
+          <Route path="/catnew" component={ CatNew } />
+          <Route path="/catedit/:id" component={ CatEdit } />
+          <Route component={ NotFound } />
+        </Switch>
+
+        <Footer />
+      </Router>
+    )
+  }
 }
-
-export default App;
+export default App
