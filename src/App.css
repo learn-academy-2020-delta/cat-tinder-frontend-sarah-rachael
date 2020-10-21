@@ -20,6 +20,12 @@
   bottom: 0;
   width: 100%;
   background-color: #84A59D;
+  font-family: 'Roboto Slab', serif;
+}
+
+/* Page Titles */
+.title{
+  font-family: 'Roboto Slab', serif;
 }
 
 /* Cat Images */
@@ -34,6 +40,7 @@
   background-color: #84A59D;
   color: #F7EDE2;
   padding: 1rem;
+  font-family: 'Roboto Slab', serif;
 }
 
 /* Hamburger Menu */
@@ -109,15 +116,24 @@ div.card{
 
 /* Phone Breakpoint */
 @media (max-width:480px) {
-  img{
+  .cat{
     margin: 10px;
     max-width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   #index-body{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+  }
+
+  #cat-card{
+    width: 90vw;
+    height: 90vh;
+    margin: 0 auto;
   }
 
   a.btn.btn-secondary{

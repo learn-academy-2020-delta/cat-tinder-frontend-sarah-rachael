@@ -6,7 +6,7 @@ class CatIndex extends Component{
     return(
       <React.Fragment>
         <div id="index-body">
-          <h3>Meet the Cats!</h3>
+          <h3 className="title">Meet the Cats!</h3>
           <br />
           <div id="button-set">
             { this.props.cats.map((cat, index) => {
