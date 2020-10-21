@@ -28,6 +28,16 @@
   font-family: 'Roboto Slab', serif;
 }
 
+/* Buttons */
+.button{
+  background-color: #F28482 !important;
+  color: #F7EDE2;
+}
+
+.button:hover{
+  color: #F5CAC3 !important;
+}
+
 /* Cat Images */
 .cat{
   height: 14rem;
@@ -112,6 +122,20 @@ div.card{
   align-items: center;
   background-color: #F28482;
   font-family: 'Grandstander', cursive;
+}
+
+
+/* New Page */
+#new-body{
+  background-color: #F7EDE2;
+  height: 100vh;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+}
+
+.form-input{
+  width: 50% !important;
+  margin: 0 auto;
 }
 
 /* Phone Breakpoint */
