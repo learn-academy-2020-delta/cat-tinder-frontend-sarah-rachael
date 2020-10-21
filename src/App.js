@@ -26,6 +26,11 @@ class App extends Component{
       cats: mockCats
     }
   }
+
+  createNewCat = (newcat) => {
+    console.log(newcat)
+  }
+
   render(){
     return(
       <Router>
@@ -38,7 +43,7 @@ class App extends Component{
             render={ (props) => <CatIndex cats={ this.state.cats } /> }
           />
           <Route
-            exact path={"/catshow/:id"}
+            path="/catshow/:id"
             render={ (props) => {
               let id = props.match.params.id
               let cat = this.state.cats.find(cat => cat.id === parseInt(id))
@@ -47,7 +52,10 @@ class App extends Component{
               )
             }}
           />
-          <Route path="/catnew" component={ CatNew } />
+          <Route
+            path="/catnew"
+            render={ (props) => <CatNew createNewCat={ this.createNewCat } /> }
+          />
           <Route path="/catedit/:id" component={ CatEdit } />
           <Route component={ NotFound } />
         </Switch>
