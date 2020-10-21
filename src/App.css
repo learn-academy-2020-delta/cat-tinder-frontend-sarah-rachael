@@ -3,7 +3,8 @@
   justify-content: space-around;
   flex-wrap: wrap;
   text-align: center;
-  margin-bottom: 5rem;
+  height: 80vh;
+  background-color: #F7EDE2;
 }
 
 #not-found-body{
@@ -45,6 +46,7 @@ nav.navbar.navbar-light{
 }
 
 button.mr-2.navbar-toggler:hover{
+  text-align: right;
   color: #F5CAC3 !important;
 }
 
@@ -66,10 +68,62 @@ a:visited{
   color: #F7EDE2;
 }
 
+/* Index Page */
+
+a.btn.btn-secondary{
+  background-color: #F28482;
+  font-weight: bold;
+  margin: 10px;
+  padding: 30px;
+  margin-bottom: 10rem;
+  font-family: 'Grandstander', cursive;
+}
+
+#index-body{
+  background-color: #F7EDE2;
+  text-align: center;
+}
+
+#button-set{
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Show Page */
+#show-body{
+  background-color: #F7EDE2;
+}
+
+#cat-card{
+  width: 70vw;
+  height: 80vh;
+  margin: 0 auto;
+}
+
+div.card{
+  text-align: center;
+  align-items: center;
+  background-color: #F28482;
+  font-family: 'Grandstander', cursive;
+}
+
 /* Phone Breakpoint */
 @media (max-width:480px) {
   img{
     margin: 10px;
     max-width: 90%;
+  }
+
+  #index-body{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  a.btn.btn-secondary{
+    background-color: #F28482;
+    font-weight: bold;
+    margin: 10px;
+    padding: 30px;
   }
 }
