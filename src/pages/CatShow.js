@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import {
+  Button,
   Card,
   CardBody,
   CardSubtitle,
   CardText,
   CardTitle,
 } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 import catPic from '../assets/cat.png'
 
 class CatShow extends Component{
@@ -23,6 +25,13 @@ class CatShow extends Component{
               <CardBody>
                 <CardText>I enjoy { this.props.cat.enjoys }.</CardText>
               </CardBody>
+              <NavLink
+                to={`/catedit/${this.props.cat.id}`}
+              >
+                <Button color="secondary" className="show-page-buttons">
+                  Edit Cat Profile
+                </Button>
+              </NavLink>
             </Card>
           </div>
         </div>
