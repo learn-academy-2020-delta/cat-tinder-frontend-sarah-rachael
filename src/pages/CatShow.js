@@ -7,11 +7,12 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import catPic from '../assets/cat.png'
 
 class CatShow extends Component{
   render(){
+    console.log(this.props.cat)
     return(
       <React.Fragment>
         <div id="show-body">
@@ -25,13 +26,20 @@ class CatShow extends Component{
               <CardBody>
                 <CardText>I enjoy { this.props.cat.enjoys }.</CardText>
               </CardBody>
-              <NavLink
+              <Link
                 to={`/catedit/${this.props.cat.id}`}
               >
                 <Button color="secondary" className="show-page-buttons">
                   Edit Cat Profile
                 </Button>
-              </NavLink>
+              </Link>
+              <Link
+                to={"/catindex"}
+              >
+                <Button color="secondary" className="show-page-buttons" onClick={ () => this.props.deleteCat(this.props.cat.id) }>
+                  Delete Cat Profile
+                </Button>
+              </Link>
             </Card>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 class CatIndex extends Component{
   render(){
@@ -11,9 +11,13 @@ class CatIndex extends Component{
           <div id="button-set">
             { this.props.cats.map((cat, index) => {
               return (
-                <Button key={ index } href={`/catshow/${cat.id}`}>
-                  Hi, I'm { cat.name } 🐾
-                </Button>
+                <Link
+                  to={`/catshow/${cat.id}`} key={ index }
+                >
+                  <button className="index-button">
+                    Hi, I'm { cat.name } 🐾
+                  </button>
+                </Link>
               )
             })}
           </div>

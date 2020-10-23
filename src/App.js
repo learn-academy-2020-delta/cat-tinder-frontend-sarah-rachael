@@ -11,7 +11,7 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 
 import './App.css'
-import mockCats from './mockCats.js'
+// import mockCats from './mockCats.js'
 
 import {
   BrowserRouter as Router,
@@ -23,17 +23,86 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      cats: mockCats
+      cats: []
     }
   }
 
+  componentDidMount(){
+    this.catIndex()
+  }
+
+  catIndex = () => {
+    fetch("http://localhost:3000/cats")
+    .then(response => {
+      return response.json()
+    })
+    .then(catsArray => {
+      console.log(catsArray)
+      this.setState({ cats: catsArray })
+    })
+    .catch(errors => {
+      console.log("index errors:", errors)
+    })
+  }
+
+
   createNewCat = (newcat) => {
-    console.log(newcat)
+    fetch("http://localhost:3000/cats", {
+      body: JSON.stringify(newcat),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(payload => {
+      this.catIndex()
+    })
+    .catch(errors => {
+      console.log("create errors:", errors)
+    })
   }
 
   updateCat = (cat, id) => {
-    console.log("cat:", cat)
-    console.log("id:", id)
+    return fetch(`http://localhost:3000/cats/${id}`, {
+      // converting an object to a string
+      body: JSON.stringify(cat),
+      // specify the info being sent in JSON and the info returning should be JSON
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // HTTP verb so the correct endpoint is invoked on the server
+      method: "PATCH"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Please check your submission.")
+      }
+      return response.json()
+    })
+    .then(payload => {
+      this.catIndex()
+    })
+    .catch(errors => {
+      console.log("update errors:", errors)
+    })
+  }
+
+  deleteCat = (id) => {
+    return fetch(`http://localhost:3000/cats/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      return response.json()
+    })
+    .catch(errors => {
+      console.log("delete errors:", errors)
+    })
   }
 
   render(){
@@ -50,10 +119,13 @@ class App extends Component{
           <Route
             path="/catshow/:id"
             render={ (props) => {
+              console.log(this.state.cats)
               let id = props.match.params.id
+              console.log(id)
               let cat = this.state.cats.find(cat => cat.id === parseInt(id))
+              console.log(cat)
               return (
-                <CatShow cat={ cat } />
+                <CatShow cat={ cat } deleteCat={ this.deleteCat } />
               )
             }}
           />
@@ -67,10 +139,7 @@ class App extends Component{
               let id = props.match.params.id
               let cat = this.state.cats.find(cat => cat.id === parseInt(id))
               return(
-                <CatEdit
-                  updateCat={ this.updateCat }
-                  cat={ cat }
-                />
+                <CatEdit updateCat={ this.updateCat } cat={ cat } />
               )
             }}
           />

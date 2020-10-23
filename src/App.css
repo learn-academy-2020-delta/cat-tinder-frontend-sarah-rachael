@@ -3,7 +3,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   text-align: center;
-  height: 80vh;
+  height: 100vh;
   background-color: #F7EDE2;
 }
 
@@ -99,12 +99,13 @@ a:visited{
 
 /* Index Page */
 
-a.btn.btn-secondary{
+.index-button{
   background-color: #F28482;
   font-weight: bold;
   margin: 10px;
   padding: 30px;
   margin-bottom: 10rem;
+  border-radius: 10px;
   font-family: 'Grandstander', cursive;
 }
 
@@ -160,16 +161,33 @@ div.card{
     flex-wrap: wrap;
   }
 
+  #home-body{
+    height: 100vh;
+  }
+
   #index-body{
+    height: 100vh;
+  }
+
+  #button-set{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   #cat-card{
     width: 90vw;
     height: 90vh;
     margin: 0 auto;
+  }
+
+  #footer{
+    display: none;
+    background-color: #F7EDE2;
+  }
+
+  .index-button{
+    margin-bottom: 5px;
+    width: 50%;
   }
 
   a.btn.btn-secondary{
