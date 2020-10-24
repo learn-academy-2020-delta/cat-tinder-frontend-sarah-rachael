@@ -32,7 +32,7 @@ class App extends Component{
   }
 
   catIndex = () => {
-    fetch("http://localhost:3000/cats")
+    fetch("https://mysterious-refuge-25804.herokuapp.com/cats")
     .then(response => {
       return response.json()
     })
@@ -47,7 +47,7 @@ class App extends Component{
 
 
   createNewCat = (newcat) => {
-    fetch("http://localhost:3000/cats", {
+    fetch("https://mysterious-refuge-25804.herokuapp.com/cats", {
       body: JSON.stringify(newcat),
       headers: {
         "Content-Type": "application/json"
@@ -66,7 +66,7 @@ class App extends Component{
   }
 
   updateCat = (cat, id) => {
-    return fetch(`http://localhost:3000/cats/${id}`, {
+    return fetch(`https://mysterious-refuge-25804.herokuapp.com/cats/${id}`, {
       // converting an object to a string
       body: JSON.stringify(cat),
       // specify the info being sent in JSON and the info returning should be JSON
@@ -91,7 +91,7 @@ class App extends Component{
   }
 
   deleteCat = (id) => {
-    return fetch(`http://localhost:3000/cats/${id}`, {
+    return fetch(`https://mysterious-refuge-25804.herokuapp.com/cats/${id}`, {
       headers: {
         "Content-Type": "application/json"
       },
